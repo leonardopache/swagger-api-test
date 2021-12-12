@@ -33,17 +33,112 @@ paths:
           description: "Invalid status value"
 
 definitions:
+  Instructor:
+    type: object
+    properties:
+      full_name:  
+        type: string
+      avatar:  
+        type: string
+      job_title:  
+        type: string
+      createdAt:  
+        type: string
+        format: date-time
+      updatedAt:  
+        type: string
+        format: date-time
+      id:  
+        type: string
+  Review:
+    type: object
+    properties:
+      comment:     
+        type: string
+      rating:  
+        type: integer
+      training:    
+        type: string
+      createdAt:   
+        type: string
+        format: date-time
+      updatedAt:   
+        type: string
+        format: date-time
+      id:     
+        type: string
   Training:
-    type: "object"
+    type: object
     properties:
       id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-      createAt:
-        type: "string"
-        format: "date-time"
+        type: string
+      createdAt:    
+        type: string
+        format: date-time
+      updatedAt:    
+        type: string
+        format: date-time
+      title: 
+        type: string
+      description: 
+        type: string
+      cover_image:
+        type: string
+      cover_movie: 
+        type: string
+      number_subscribers:    
+        type: number
+      category:
+        type: object
+        properties:
+          name:    
+            type: string
+      sub_category:
+        type: object
+        properties:
+          name:    
+            type: string
+      attributes:
+        type: object
+        properties:
+          video_content_length: 
+            type: integer
+            format: int64
+          num_articles: 
+            type: integer
+            format: int64
+          num_practice_tests: 
+            type: integer
+            format: int64
+          has_lifetime_access:
+            type:  boolean
+          has_assignments:
+            type: boolean
+          has_certificate:
+            type: boolean
+      price:
+        type: object
+        properties: 
+          amount: 
+            type: number
+            format: float
+          currency: 
+              type: string
+          currency_symbol: 
+              type: string
+          price_string: 
+              type: string
+          is_free: 
+            type: boolean
+            default: false
+      instructors:
+        type: array
+        items:
+          $ref: '#/definitions/Instructor'
+      reviews:
+        type: array
+        items:
+          $ref: '#/definitions/Review'
     xml:
       name: "Training"
 
